@@ -12,7 +12,13 @@ def main():
 
     gemmodel = "gemini-2.0-flash-001"
 
-    prompt = "Why is Boot.dev such a great place to learn backend development? Use one paragraph maximum."
+    args = argv[1:]
+
+    if len(args) < 1:
+        print("Please provide a prompt as an arg.")
+        os._exit(1) 
+
+    prompt = args
 
     response = client.models.generate_content(model=gemmodel, contents=prompt)
 
